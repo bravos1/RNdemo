@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Button} from 'react-native';
 import Demo from './Demo';
 import Demo2 from './Demo/Demo2';
 

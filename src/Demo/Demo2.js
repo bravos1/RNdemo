@@ -4,13 +4,14 @@ import {SafeAreaView, StyleSheet, Text, View, Button} from 'react-native';
 import ScreenBrightness from 'react-native-screen-brightness';
 import Slider from '@react-native-community/slider';
 
-import PowerManager from '@zeemyself/react-native-powermanager';
+import Toast from './Toast';
 
 const App = () => {
   const [brightness, setBrightness] = useState(0);
 
   const getBrightness = async () => {
     const res = await ScreenBrightness.getBrightness();
+    console.log('😀 ~ res', res);
   };
 
   const onBrightnessChange = async value => {
@@ -54,9 +55,9 @@ const App = () => {
         <Button
           style={styles.button2}
           onPress={() => {
-            console.log(PowerManager.isSupported());
+            Toast.show('???????????????????', Toast.SHORT);
           }}
-          title="测试"
+          title="?"
         />
       </View>
     </SafeAreaView>

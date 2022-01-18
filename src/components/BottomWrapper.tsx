@@ -1,12 +1,31 @@
 import { Box, Text, Button } from 'native-base'
 import React from 'react'
 import { StyleSheet } from 'react-native'
+import { roomStatusType } from '../type/meetingType';
 
-export default function BottomWrapper() {
+export default function BottomWrapper(props: { roomStatus: any; }) {
+  const { roomStatus } = props;
   return (
     <Box style={styles.bottomWrapper}>
-      <Text style={styles.bottomButtonTips}>【立即开会】可快速预约接下来30分钟或1小时的会议，你也可以点击右侧空闲时间段预约其他时间</Text>
-      <Button style={styles.bottomButton} _text={{ color: '#1ba247', fontSize: '32', fontWeight: 'bold' }}>立即开会</Button>
+      {
+        roomStatus === roomStatusType.FREE &&
+        <Box>
+          <Text style={styles.bottomButtonTips}>【立即开会】可快速预约接下来30分钟或1小时的会议，你也可以点击右侧空闲时间段预约其他时间</Text>
+          <Button style={styles.bottomButton} _text={{ color: '#1ba247', fontSize: '32', fontWeight: 'bold' }}>STAR NOW</Button>
+        </Box>
+      }
+      {
+        roomStatus === roomStatusType.READY &&
+        <Box>
+          <Button style={styles.bottomButton} _text={{ color: '#1ba247', fontSize: '32', fontWeight: 'bold' }}>STAR NOW</Button>
+        </Box>
+      }
+      {
+        roomStatus === roomStatusType.USING &&
+        <Box>
+          <Button style={styles.bottomButton} _text={{ color: '#1ba247', fontSize: '32', fontWeight: 'bold' }}>STAR NOW</Button>
+        </Box>
+      }
     </Box>
   )
 }

@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Box, Text } from 'native-base'
 import { StyleSheet } from 'react-native'
+import { useSelector } from 'react-redux'
+import { RootState } from '../store/store'
+import { roomStatusType } from '../type/meetingType'
 
 export default function Timeline() {
+
 
     return (
         <Box style={styles.timelineWrapper}>
@@ -18,6 +22,6 @@ const styles = StyleSheet.create({
         top: 0,
         width: 440,
         height: 800,
-        backgroundColor: '#007232'
+        backgroundColor: 'rgba(0,0,0,0.24)'
     },
 })

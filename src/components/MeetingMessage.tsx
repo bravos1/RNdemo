@@ -1,15 +1,23 @@
 import React from 'react'
 import { Box, Text } from 'native-base'
 import { StyleSheet } from 'react-native'
+import { roomStatusType } from '../type/meetingType';
 
 
-export default function MeetingMessage() {
+export default function MeetingMessage(props: { meetingMessage: any; roomStatus: roomStatusType }) {
+    const { meetingMessage, roomStatus } = props;
+
     return (
         <Box style={styles.meetingMessage}>
-            <Text>人力资源现场面试</Text>
-            <Text>黄松</Text>
-            <Text>距离下一场会议开始还有 1 小时</Text>
-        </Box>
+            {
+                meetingMessage && roomStatus === roomStatusType.USING &&
+                < Box >
+                    <Text>{meetingMessage.meetingTheme}</Text>
+                    <Text>{meetingMessage.meetingCreater}</Text>
+                    <Text></Text>
+                </Box>
+            }
+        </Box >
     )
 }
 

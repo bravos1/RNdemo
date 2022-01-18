@@ -1,21 +1,54 @@
-import { Box, Button, HStack, Text } from 'native-base';
-import React from 'react';
+import { Box, Text } from 'native-base';
+import React, { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { BottomWrapper, MeetingMessage, MeetingRoomInfo, Timeline } from '../components'
 
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/store';
+import { roomStatusType } from '../type/meetingType';
+
 const Demo = () => {
+
+  const roomName = useSelector((state: RootState) => state.meetingRoom.roomName)
+  const roomStatus = useSelector((state: RootState) => state.meetingRoom.roomStatus)
+  const meetingMessage = useSelector((state: RootState) => state.meetingRoom.meetingMessage)
+
+
+  const { roomThemeColor, roomStatusText } = useMemo(() => {
+    let roomThemeColor = '#1ba247';
+    let roomStatusText = 'noText';
+
+    switch (roomStatus) {
+      case roomStatusType.FREE:
+        roomThemeColor = '#0a9a45';
+        roomStatusText = 'Available';
+        break;
+      case roomStatusType.USING:
+        roomThemeColor = '#cf3840';
+        roomStatusText = 'Using';
+        break;
+      case roomStatusType.READY:
+        roomThemeColor = '#e07f2c';
+        roomStatusText = 'Ready To Use';
+        break;
+      default:
+        break;
+    }
+    return { roomThemeColor, roomStatusText }
+  }, [roomStatus])
+
   return (
-    <Box flex={1} style={styles.container}>
+    <Box flex={1} style={[styles.container, { backgroundColor: roomThemeColor }]}>
       <Text style={styles.companylogo}>Milesight</Text>
 
-      <MeetingRoomInfo />
+      <MeetingRoomInfo roomName={roomName} />
 
-      <Text style={styles.meetingRoomStatus} fontSize={96} fontWeight={'bold'} >空闲</Text>
+      <Text style={styles.meetingRoomStatus} fontSize={96} fontWeight={'bold'} >{roomStatusText}</Text>
 
-      <MeetingMessage />
+      <MeetingMessage meetingMessage={meetingMessage} roomStatus={roomStatus} />
 
-      <BottomWrapper />
+      <BottomWrapper roomStatus={roomStatus} />
 
       <Timeline />
 

@@ -1,22 +1,31 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
-import { Box, HStack,Text } from 'native-base'
+import { Box, HStack, Pressable, Text } from 'native-base'
+import { roomStatusType } from '../type/meetingType'
+import { useDispatch } from 'react-redux'
+import { setRoomStatus } from '../store/meetingRoomSlice'
 
-export default function MeetingRoomInfo() {
-    return (
-        <Box style={styles.meetingRoomInfoWrapper}>
-        <Text style={styles.meetingRoomName}>
-          培训会议室
-        </Text>
-        <HStack space={3}>
-          {
-            ['10人', '投影仪', '电视', '视频'].map(item =>
-              (<Text style={styles.meetingRoomDevices} key={item}>{item}</Text>)
-            )
-          }
-        </HStack>
-      </Box>
-    )
+export default function MeetingRoomInfo(props: { roomName: string }) {
+
+  const { roomName } = props
+
+  const dispatch = useDispatch()
+
+  return (
+    <Box style={styles.meetingRoomInfoWrapper}>
+      <Text style={styles.meetingRoomName}>
+        {roomName}
+      </Text>
+      <HStack space={3}>
+        {
+          statusController.map(item => (
+            <Pressable key={item.text} onPress={() => dispatch(setRoomStatus(item.Status))}>
+              <Text style={styles.meetingRoomDevices} >{item.text}</Text>
+            </Pressable>))
+        }
+      </HStack>
+    </Box>
+  )
 }
 const styles = StyleSheet.create({
   meetingRoomInfoWrapper: {
@@ -38,3 +47,17 @@ const styles = StyleSheet.create({
     borderRadius: 2
   },
 })
+
+
+const statusController = [
+  {
+    text: 'FREE',
+    Status: roomStatusType.FREE
+  }, {
+    text: 'USING',
+    Status: roomStatusType.USING
+  }, {
+    text: 'READY',
+    Status: roomStatusType.READY
+  }
+]

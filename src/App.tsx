@@ -1,19 +1,13 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import { NativeBaseProvider } from 'native-base';
 
+import { CustomTheme } from './theme';
 import * as Demo from './Demo';
 
-export default function index() {
+export default function App() {
   return (
-    <View style={styles.container}>
+    <NativeBaseProvider theme={CustomTheme}>
       <Demo.Demo1 />
-    </View>
+    </NativeBaseProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#24292e',
-    flex: 1,
-  },
-});

@@ -1,21 +1,30 @@
-import { Box, Text } from 'native-base';
-import React, { useMemo } from 'react';
-import { StyleSheet } from 'react-native';
+import {Box, Text} from 'native-base';
+import React, {useMemo} from 'react';
+import {StyleSheet} from 'react-native';
 
-import { BottomWrapper, MeetingMessage, MeetingRoomInfo, Timeline } from '../components'
+import {
+  BottomWrapper,
+  MeetingMessage,
+  MeetingRoomInfo,
+  Timeline,
+} from '../components';
 
-import { useSelector } from 'react-redux';
-import { RootState } from '../store/store';
-import { roomStatusType } from '../type/meetingType';
+import {useSelector} from 'react-redux';
+import {RootState} from '../store/store';
+import {roomStatusType} from '../type/meetingType';
 
 const Demo = () => {
+  const roomName = useSelector(
+    (state: RootState) => state.meetingRoom.roomName,
+  );
+  const roomStatus = useSelector(
+    (state: RootState) => state.meetingRoom.roomStatus,
+  );
+  const meetingMessage = useSelector(
+    (state: RootState) => state.meetingRoom.meetingMessage,
+  );
 
-  const roomName = useSelector((state: RootState) => state.meetingRoom.roomName)
-  const roomStatus = useSelector((state: RootState) => state.meetingRoom.roomStatus)
-  const meetingMessage = useSelector((state: RootState) => state.meetingRoom.meetingMessage)
-
-
-  const { roomThemeColor, roomStatusText } = useMemo(() => {
+  const {roomThemeColor, roomStatusText} = useMemo(() => {
     let roomThemeColor = '#1ba247';
     let roomStatusText = 'noText';
 
@@ -35,24 +44,25 @@ const Demo = () => {
       default:
         break;
     }
-    return { roomThemeColor, roomStatusText }
-  }, [roomStatus])
+    return {roomThemeColor, roomStatusText};
+  }, [roomStatus]);
 
   return (
-    <Box flex={1} style={[styles.container, { backgroundColor: roomThemeColor }]}>
+    <Box flex={1} style={[styles.container, {backgroundColor: roomThemeColor}]}>
       <Text style={styles.companylogo}>Milesight</Text>
 
       <MeetingRoomInfo roomName={roomName} />
 
-      <Text style={styles.meetingRoomStatus} fontSize={96} fontWeight={'bold'} >{roomStatusText}</Text>
+      <Text style={styles.meetingRoomStatus} fontSize={96} fontWeight={'bold'}>
+        {roomStatusText}
+      </Text>
 
       <MeetingMessage meetingMessage={meetingMessage} roomStatus={roomStatus} />
 
       <BottomWrapper roomStatus={roomStatus} />
 
       <Timeline />
-
-    </Box >
+    </Box>
   );
 };
 
@@ -73,7 +83,6 @@ const styles = StyleSheet.create({
   meetingRoomStatus: {
     marginTop: 20,
     width: 660,
-    height: 136
+    height: 136,
   },
-
 });

@@ -1,10 +1,25 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Button} from 'react-native';
+
+import ScreenBrightness from 'react-native-screen-brightness';
 
 export default function Demo2() {
+  const first = second => {
+    ScreenBrightness.setBrightness(0.5); // between 0 and 1
+  };
+
+  ScreenBrightness.getBrightness().then(brightness => {
+    console.log('brightness', brightness);
+  });
   return (
-    <View>
+    <View
+      style={{flex: 1, justifyContent: 'flex-end', backgroundColor: '#24292e'}}>
       <Text>demo2</Text>
+      <View style={{width: 200, height: 200, justifyContent: 'space-between'}}>
+        <Button onPress={() => console.log('test:')} title="test" />
+        <Button onPress={() => console.log('test:')} title="test" />
+      </View>
     </View>
   );
 }

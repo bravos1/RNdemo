@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@adrianso/react-native-device-brightness@^1.2.5":
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/@adrianso/react-native-device-brightness/-/react-native-device-brightness-1.2.5.tgz#0cded59a17a270a907a358aed47b3e6a67862c6e"
+  integrity sha512-HJH0pygEVZ/RQQyIjHtX7qDpUNRKrgMmkPuIIkGjSKgjVZcyN01kvFom2O8CxmTiZ6kg+Uai6AVHT6kdZ11umA==
+
 "@babel/code-frame@7.12.11":
   version "7.12.11"
   resolved "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.12.11.tgz"
@@ -3238,14 +3243,9 @@ data-urls@^2.0.0:
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
 
-dayjs@^1.10.7:
+dayjs@^1.10.7, dayjs@^1.8.15:
   version "1.10.7"
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.7.tgz#2cf5f91add28116748440866a0a1d26f3a6ce468"
-  integrity sha512-P6twpd70BcPK34K26uJ1KT3wlhpuOAPoMwJzpsIWUxHZ7wpmbdZL/hQqBDfz7hGurYSa5PhzdhDHtt319hL3ig==
-
-dayjs@^1.8.15:
-  version "1.10.7"
-  resolved "https://registry.npmjs.org/dayjs/-/dayjs-1.10.7.tgz"
   integrity sha512-P6twpd70BcPK34K26uJ1KT3wlhpuOAPoMwJzpsIWUxHZ7wpmbdZL/hQqBDfz7hGurYSa5PhzdhDHtt319hL3ig==
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3:
@@ -6565,10 +6565,10 @@ react-native-safe-area-context@^3.3.2:
   resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-3.3.2.tgz#9549a2ce580f2374edb05e49d661258d1b8bcaed"
   integrity sha512-yOwiiPJ1rk+/nfK13eafbpW6sKW0jOnsRem2C1LPJjM3tfTof6hlvV5eWHATye3XOpu2cJ7N+HdkUvUDGwFD2Q==
 
-react-native-screen-brightness@^2.0.0-alpha:
-  version "2.0.0-alpha"
-  resolved "https://registry.npmjs.org/react-native-screen-brightness/-/react-native-screen-brightness-2.0.0-alpha.tgz"
-  integrity sha512-NdJPptcWiFwG9aypm0awYv9d/aoZSJetXPFkx6w/UuNX9SRr5YTKXMSND/2lwuSOw6uGU9mQ0f4dBuGZSNgzow==
+react-native-screen-brightness@1.x:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-screen-brightness/-/react-native-screen-brightness-1.0.1.tgz#bb8e0807f9b4ae967ad3b7e22c377ed46b167d2e"
+  integrity sha512-nG/BIiH1LJX4nw5ekr4klEYJhTXiuVM39He3ieMovVbJ/sLGWYvBqGwzpVFZGPr5hAcjVP+jb4kD9ZRGDVzJ1Q==
 
 react-native-svg@^12.1.1:
   version "12.1.1"

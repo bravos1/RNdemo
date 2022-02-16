@@ -1,7 +1,7 @@
 export enum roomStatusType {
-  FREE = "free",
-  USING = "using",
-  READY = "ready",
+  FREE = 'free',
+  USING = 'using',
+  READY = 'ready',
 }
 
 export interface meetingRoomStateType {

@@ -8,11 +8,11 @@ import {CustomTheme} from './theme';
 import * as Demo from './Demo';
 
 export default function App() {
-  return (
-    <NativeBaseProvider theme={CustomTheme}>
-      <Provider store={store}>
-        <Demo.Demo3 />
-      </Provider>
-    </NativeBaseProvider>
-  );
+	return (
+		<NativeBaseProvider theme={CustomTheme}>
+			<Provider store={store}>
+				<Demo.Demo />
+			</Provider>
+		</NativeBaseProvider>
+	);
 }

@@ -2,16 +2,7 @@
 import React from 'react';
 import {View, Text, Button} from 'react-native';
 
-import ScreenBrightness from 'react-native-screen-brightness';
-
 export default function Demo2() {
-  const first = second => {
-    ScreenBrightness.setBrightness(0.5); // between 0 and 1
-  };
-
-  ScreenBrightness.getBrightness().then(brightness => {
-    console.log('brightness', brightness);
-  });
   return (
     <View
       style={{flex: 1, justifyContent: 'flex-end', backgroundColor: '#24292e'}}>

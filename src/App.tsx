@@ -11,7 +11,7 @@ export default function App() {
   return (
     <NativeBaseProvider theme={CustomTheme}>
       <Provider store={store}>
-        <Demo.Demo2 />
+        <Demo.Demo3 />
       </Provider>
     </NativeBaseProvider>
   );

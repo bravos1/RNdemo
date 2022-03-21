@@ -1,5 +1,5 @@
 import React from 'react';
-import {NativeBaseProvider} from 'native-base';
+import {NativeBaseProvider, View} from 'native-base';
 
 import {store} from './store/store';
 import {Provider} from 'react-redux';
@@ -11,7 +11,9 @@ export default function App() {
 	return (
 		<NativeBaseProvider theme={CustomTheme}>
 			<Provider store={store}>
-				<Demo.Demo />
+				<View style={{flex:1,backgroundColor:'#24292e'}}>
+					<Demo.gestureDemo />
+				</View>
 			</Provider>
 		</NativeBaseProvider>
 	);

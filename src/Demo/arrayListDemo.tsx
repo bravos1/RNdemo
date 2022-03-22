@@ -1,58 +1,53 @@
-import { ScrollView } from 'native-base';
-import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
-import { View, StyleSheet, TextInput, Text, TouchableOpacity,Button ,KeyboardAvoidingView, GestureResponderEvent} from 'react-native';
+import  React,{useRef,useEffect,useState} from 'react';
+import { Text, View, StyleSheet,TextInput,ScrollView,KeyboardAvoidingView,TouchableOpacity } from 'react-native';
 
-export default function Demo2() {
-	const [selectedItem,setSeLectedItem] = useState<number|null>(null)
-	// const inputRefList = useRef<ReactNode>([]);
+export default function App() {
+  const [selectedItem,setSeLectedItem] = useState(null)
+  const [userTyping,setUserTyping] = useState(false);
 
-	const selected = (index: number) => {
-		setSeLectedItem(index)
-		// console.log('💫 test:',inputRefList[index]?.focus());
-	 }
+	const selected = (index) => {
+    setUserTyping(true)
+	setSeLectedItem(index)
+	}
+  const onBlur=()=>{
+    setUserTyping(false)
+  }
 
-	//  const measuredRef = useCallback(node => {
-	// 	if (node !== null) {
-	// 	  setHeight(node.getBoundingClientRect().height);
-	// 	}
-	//   }, []);
-
-
-	return (
-		<View style={styles.container}>
-				<ScrollView style={styles.scroll}>
+  return (
+    <View style={styles.container}>
+			<KeyboardAvoidingView style={{flex:1}}>
+			<ScrollView style={styles.scroll} >
 					{
-						['1', '2', '3', '4','5','6'].map((item,index) => (
-							<TouchableOpacity onPress={()=>selected(index)}>
+						['1', '2', '3', '4','5','6','7'].map((item,index) => (
+							<TouchableOpacity onPress={()=>selected(index)} key={item}>
 							<View style={[styles.itemWrapper,selectedItem===index &&styles.selectedItem]}>
-								<Text style={styles.itemText}>TEST</Text>
+								<Text style={styles.itemText}>TEST {item}</Text>
 								{
-									(selectedItem===index)&&
-									<KeyboardAvoidingView style={{flex:1}} behavior='position' keyboardVerticalOffset={20}>
+									(selectedItem===index)&&userTyping&&
 									<InputFC 
 										style={styles.itemInput} 
 										placeholder='NO TEXT' 
 										placeholderTextColor={'white'} 
 										autoCapitalize={'none'}
+                    					onBlur={onBlur}
 									/>
-									</KeyboardAvoidingView>
 								}							
 							</View>
 						</TouchableOpacity>
 						))
 					}
 				</ScrollView>
-		</View>
-	);
+			</KeyboardAvoidingView>
+    </View>
+  );
 }
 
-
-const InputFC = (props: { style: any; placeholder: any; placeholderTextColor: any; autoCapitalize: any; }) => {
-	const {style,placeholder,placeholderTextColor,autoCapitalize} = props
-	const inputRef = useRef<TextInput>(null);
+const InputFC = (props) => {
+	const {style,placeholder,placeholderTextColor,autoCapitalize,onBlur} = props
+	const inputRef = useRef(null);
 	
 	useEffect(()=>{
-		if(inputRef.current) inputRef.current.focus()
+		if(inputRef.current) inputRef?.current?.focus()
 	})
 	
 	return (
@@ -62,6 +57,7 @@ const InputFC = (props: { style: any; placeholder: any; placeholderTextColor: an
 		placeholder={placeholder}
 		placeholderTextColor={placeholderTextColor} 
 		autoCapitalize={autoCapitalize}
+    	onBlur={onBlur}
 	/>)
 }
 
@@ -72,15 +68,15 @@ const styles = StyleSheet.create({
 	},
 	scroll: {
 		flex: 1,
-		paddingHorizontal: 120,
+		paddingHorizontal: 20,
 	},
 
 	itemWrapper:{
-		width: 1024,
+		width: '100%',
 		paddingLeft:20,
 		paddingVertical:20,
 		marginBottom: 20,
-		backgroundColor: 'rgba(255, 255, 255, 0.04)',
+		backgroundColor: '#6b6965',
 		borderRadius:20,
 	},
 	itemText:{

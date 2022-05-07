@@ -9,11 +9,7 @@ const videoDemo = () => {
   return (
     <Box>
     <Text>sss</Text>
-    <Video source={{uri: "https://www.tootootool.com/wp-content/uploads/2020/11/SampleVideo_176x144_5mb.3gp"}}   // Can be a URL or a local file.
-       style={styles.backgroundVideo} 
-       repeat={true}
-       resizeMode={"contain"}
-       />
+
     </Box>
   )
 }

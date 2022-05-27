@@ -25,15 +25,15 @@ module.exports = {
 			'error',
 			'tab'
 		],
-		'linebreak-style': [
-			'error',
-			'uinx'
-		],
 		'quotes': [
 			'error',
 			'single'
 		],
 		'semi': [
+			'error',
+			'always'
+		],
+		'space-before-function-paren': [
 			'error',
 			'always'
 		]

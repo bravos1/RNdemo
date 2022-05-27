@@ -1,7 +1,7 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
 import {RNCamera} from 'react-native-camera';
-export default function Demo3() {
+export default function Demo3 () {
 	console.log('\n\n');
 
 	const onBarCodeRead = (message: any) => {

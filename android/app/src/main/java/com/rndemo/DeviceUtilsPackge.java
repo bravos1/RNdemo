@@ -1,6 +1,5 @@
 package com.rndemo;
 
-
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -10,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class CustomToastPackage implements ReactPackage {
+public class DeviceUtilsPackge implements ReactPackage {
 
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
@@ -22,7 +21,7 @@ public class CustomToastPackage implements ReactPackage {
             ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
 
-        modules.add(new ToastModule(reactContext));
+        modules.add(new DeviceUtilsModule(reactContext));
 
         return modules;
     }

@@ -8,8 +8,6 @@ import SystemNavigationBar from 'react-native-system-navigation-bar';
 const videoDemo = () => {
 	const [isHiden, setIsHiden] = useState(true);
 
-
-
 	const RNHiden = useCallback(async () => {
 		setIsHiden(!isHiden);
 		StatusBar.setHidden(isHiden, 'fade');

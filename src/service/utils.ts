@@ -1,4 +1,4 @@
-import { NativeModules,Dimensions, PixelRatio } from 'react-native';
+import { NativeModules } from 'react-native';
 const { DeviceUtilsModule:device} = NativeModules;
 
 

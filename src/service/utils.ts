@@ -4,9 +4,6 @@ const { DeviceUtilsModule:device} = NativeModules;
 
 export const deviceUtils = {
 	setUIVisible (isShow:boolean) {
-		console.log('\n\n '); 
-		console.log('💫 ~ isShow', isShow);
-
 		if(isShow){
 			return  device.toShow();
 		}else if(!isShow){
@@ -14,6 +11,11 @@ export const deviceUtils = {
 		}else{
 			return device.toTest();
 		}
-     
+	},
+	hidenBar (){
+		return device.hidenBar();
+	},
+	showBar (){
+		return device.showBar();
 	}
 };

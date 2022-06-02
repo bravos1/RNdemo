@@ -1,45 +1,43 @@
-import { View,  StyleSheet,DeviceEventEmitter,NativeEventEmitter, NativeModules} from 'react-native';
+import { View,  StyleSheet,DeviceEventEmitter} from 'react-native';
 import React, { useEffect } from 'react';
 import { Button } from 'native-base';
 import { deviceUtils } from '../service/utils';
 
 const StyleDemo = () => {
-	const event = new NativeEventEmitter(NativeModules.DeviceUtilsModule);
 
 	useEffect(() => {
 		const eventListener = DeviceEventEmitter.addListener('EventReminder', () => {
 			console.log('sasss');
 		});
-
-		const NativeEventListener = event.addListener('EventReminder', () => {
-			console.log('sasss');
-		});
 		return () => {
 			eventListener.remove();
-			NativeEventListener.remove();
 		};
 	}, []);
 
-	
 	const show = async () => { 
 		const res = await deviceUtils.showBar();
-		console.log('💫 ~ showFn', res);
+		console.log('showFn');
 	};
 
 	const hiden = async () => { 
 		const res = await deviceUtils.showBar();
-		console.log('💫 ~ hidenFn', res);
+		console.log('hidenFn');
 	};
-	// const popEvent = async () => { 
-	// 	DeviceEventEmitter.emit('EventReminder','77');
-	// };
+	const popEvent = async () => { 
+		// deviceUtils.runCommand('input keyevent 223');
+	};
+	const commandEvent = async () => { 
+		// deviceUtils.runCommand('input keyevent 223');
+	};
 
 	return (
 		<View style={{flex:1}}>
 			<View style={Styles.box1}/>
 			<Button onPress={show} style={Styles.box1} >show</Button>
 			<Button onPress={hiden} style={Styles.box1} >hiden</Button>
-			{/* <Button onPress={popEvent} style={Styles.box1} >hiden</Button> */}
+
+			<Button onPress={popEvent} style={Styles.box1} >popEvent</Button>
+			<Button onPress={commandEvent} style={Styles.box1} >commandEvent</Button>
 
 		</View>
 	);

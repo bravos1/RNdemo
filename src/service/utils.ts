@@ -1,21 +1,16 @@
 import { NativeModules } from 'react-native';
 const { DeviceUtilsModule:device} = NativeModules;
-
-
 export const deviceUtils = {
-	setUIVisible (isShow:boolean) {
-		if(isShow){
-			return  device.toShow();
-		}else if(!isShow){
-			return  device.toHiden();
-		}else{
-			return device.toTest();
-		}
-	},
+	ADBCommand : device.RNcommand,
+
 	hidenBar (){
 		return device.hidenBar();
 	},
 	showBar (){
 		return device.showBar();
+	},
+	runCommand (command:string){
+		return this.ADBCommand(command);
 	}
+
 };

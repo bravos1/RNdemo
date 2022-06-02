@@ -2,12 +2,21 @@ package com.rndemo;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.facebook.react.ReactActivity;
 
-public class MainActivity extends ReactActivity {
+public class MainActivity extends ReactActivity{
+
+  private IntentFilter intentFilter;
+  private MyBroadcastReceiver myBroadcastReceiver;
+
+  private static final String TAG = "RNdemo";
+  private static final String VOLUME_CHANGE = "android.media.VOLUME_CHANGED_ACTION";
 
   /**
    * Returns the name of the main component registered from JavaScript. This is used to schedule
@@ -21,19 +30,16 @@ public class MainActivity extends ReactActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    hideNavigationBar();
+    intentFilter = new IntentFilter();
+    intentFilter.addAction(VOLUME_CHANGE);
+    myBroadcastReceiver = new MyBroadcastReceiver();
+    registerReceiver(myBroadcastReceiver, intentFilter);
   }
 
 
   @Override
-  public void onWindowFocusChanged(boolean hasFocus) {
-    super.onWindowFocusChanged(hasFocus);
-    if (hasFocus) {
-      hideNavigationBar();
-    }
-  }
-
-  private void hideNavigationBar() {
-//    getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
+  protected void onDestroy() {
+    super.onDestroy();
+    unregisterReceiver(myBroadcastReceiver);
   }
 }

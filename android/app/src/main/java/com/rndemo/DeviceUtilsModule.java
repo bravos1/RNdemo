@@ -6,6 +6,7 @@ import static com.facebook.react.bridge.Arguments.createMap;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
@@ -22,18 +23,17 @@ import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 
+import java.io.IOException;
+
 
 public class DeviceUtilsModule extends ReactContextBaseJavaModule {
     private static final String TAG = "DeviceUtilsModule";
     private static ReactApplicationContext reactContext;
 
-
     DeviceUtilsModule(ReactApplicationContext context) {
         super(context);
         reactContext = context;
     }
-
-
 
     @Override
     public String getName() {
@@ -41,92 +41,37 @@ public class DeviceUtilsModule extends ReactContextBaseJavaModule {
     }
 
 
+    /**
+     * brige 层 adb 指令接受
+     *
+     * @return
+     * @param command
+     */
     @ReactMethod
-    public void toTest(Promise p) {
-        Activity currentActivity = getCurrentActivity();
-        currentActivity.runOnUiThread((
-                        new Runnable() {
-                            @Override
-                            public void run() {
-                                currentActivity.getWindow().getDecorView().setSystemUiVisibility(
-                                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN
-                                );
-
-                                ActionBar actionBar = currentActivity.getActionBar();
-                                if (actionBar != null) {
-                                    actionBar.hide();
-                                }
-                                currentActivity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-                            }
-                        })
-        );
-        p.resolve("test");
+    public void RNcommand(String command,Promise p) throws IOException {
+        try {
+            String res = Shell.sudo(command);
+            p.resolve(res);
+        }catch (Shell.ShellException e){
+            p.reject("0","command faild" +e);
+        }
     }
 
     @ReactMethod
-    public void toHiden(Promise p) {
-        Activity currentActivity = getCurrentActivity();
-        currentActivity.runOnUiThread((
-                        new Runnable() {
-                            @Override
-                            public void run() {
-                                ActionBar actionBar = currentActivity.getActionBar();
-                                if (actionBar != null) {
-                                    actionBar.hide();
-                                }
-
-                            }
-                        })
-        );
-        p.resolve("hiden");
-    }
-
-    @ReactMethod
-    public void toShow(Promise p) {
-        Activity currentActivity = getCurrentActivity();
-        currentActivity.runOnUiThread((
-                        new Runnable() {
-                            @Override
-                            public void run() {
-                                currentActivity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
-                            }
-                        })
-        );
-        p.resolve("show");
-    }
-
-
-
-    private void sendEvent(ReactContext reactContext,
-                           String eventName,
-                           @Nullable WritableMap params) {
-        reactContext
-                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                .emit(eventName, params);
-    }
-    @ReactMethod
-    public void addListener(String eventName) {
-
-    }
-
-    @ReactMethod
-    public void removeListeners(Integer count) {
-        // Remove upstream listeners, stop unnecessary background tasks
+    public void sendEvent(ReactContext reactContext, String eventName, String params) {
+        reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(eventName, params);
     }
 
     @ReactMethod
     public void hidenBar() {
         //SystemProperties.set("sys.systembar.hide", "1");
         Log.d(TAG, "hidenBar ");
-        sendEvent(reactContext,"EventReminder",null);
+        sendEvent(reactContext,"EventReminder","aaaa");
     }
 
     @ReactMethod
     public void showBar(Promise p) {
         Log.d(TAG, "showBar: ");
-//        SystemProperties.set("sys.systembar.hide", "0");
         p.resolve("显示");
     }
-
-
 }

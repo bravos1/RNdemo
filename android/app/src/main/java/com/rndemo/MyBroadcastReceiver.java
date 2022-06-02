@@ -19,12 +19,9 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         if (VOLUME_CHANGE.equals(intent.getAction()) ){
             Log.d(TAG, "onReceive: VOLUME_CHANGE_ACTION");
-            sendEvent((ReactContext) context,"EventReminder",null);
+            
+//            sendEvent((ReactContext) context,"EventReminder",null);
         }
     }
 
-    @ReactMethod
-    public void sendEvent(ReactContext context,String eventName, String params) {
-        context.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(eventName, params);
-    }
 }

@@ -58,7 +58,7 @@ public class DeviceUtilsModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void sendEvent(ReactContext reactContext, String eventName, String params) {
+    public void sendEvent( String eventName, String params) {
         reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(eventName, params);
     }
 
@@ -66,7 +66,7 @@ public class DeviceUtilsModule extends ReactContextBaseJavaModule {
     public void hidenBar() {
         //SystemProperties.set("sys.systembar.hide", "1");
         Log.d(TAG, "hidenBar ");
-        sendEvent(reactContext,"EventReminder","aaaa");
+        sendEvent("EventReminder","aaaa");
     }
 
     @ReactMethod

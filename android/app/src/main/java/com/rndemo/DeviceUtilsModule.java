@@ -58,7 +58,7 @@ public class DeviceUtilsModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void sendEvent( String eventName, String params) {
+    public static void sendEvent( String eventName, String params) {
         reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(eventName, params);
     }
 

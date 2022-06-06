@@ -12,7 +12,7 @@ export default function App () {
 		<NativeBaseProvider theme={CustomTheme}>
 			<Provider store={store}>
 				<View style={{flex:1,backgroundColor:'#24292e'}}>
-					<Demo.StyleDemo />
+					<Demo.arrayListDemo />
 				</View>
 			</Provider>
 		</NativeBaseProvider>

@@ -4,3 +4,4 @@ export {default as cameraDemo} from './cameraDemo';
 export {default as Demo} from './Demo';
 export {default as video} from './videoDemo';
 export {default as StyleDemo} from './StyleDemo';
+// export {default as StorageDemo} from './StorageDemo';

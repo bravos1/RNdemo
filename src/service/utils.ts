@@ -11,6 +11,9 @@ export const deviceUtils = {
 	},
 	runCommand (command:string){
 		return this.ADBCommand(command);
+	},
+	getStorage (){
+		return device.getStoragePath(false);
 	}
 
 };

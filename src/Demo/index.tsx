@@ -4,3 +4,5 @@ export {default as Demo} from './Demo';
 export {default as video} from './videoDemo';
 export {default as StyleDemo} from './StyleDemo';
 export {default as FaceDemo} from './FaceDemo';
+export {default as SensorDemo} from './SensorDemo';
+export {default as AudioManage} from './audioMange';

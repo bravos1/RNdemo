@@ -6774,6 +6774,11 @@ react-native-keyboard-aware-scroll-view@^0.9.5:
     prop-types "^15.6.2"
     react-native-iphone-x-helper "^1.0.3"
 
+react-native-proximity@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-proximity/-/react-native-proximity-3.0.0.tgz#17152570121467b70070f00b1e6b62ca2cbbc75c"
+  integrity sha512-OnFXxCAcA6veF9jd5i5J3v1RR/IwBnX0DHMfFWmdltqlwDOQQi0dgKwZMyB0FkAeGHdYo7UESzEzmxkJpeqhdQ==
+
 react-native-safe-area-context@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-3.3.2.tgz#9549a2ce580f2374edb05e49d661258d1b8bcaed"
@@ -6785,6 +6790,13 @@ react-native-safe-area-view@^0.14.9:
   integrity sha512-WII/ulhpVyL/qbYb7vydq7dJAfZRBcEhg4/UWt6F6nAKpLa3gAceMOxBxI914ppwSP/TdUsandFy6lkJQE0z4A==
   dependencies:
     hoist-non-react-statics "^2.3.1"
+
+react-native-sensors@^7.3.5:
+  version "7.3.5"
+  resolved "https://registry.yarnpkg.com/react-native-sensors/-/react-native-sensors-7.3.5.tgz#19ef06ca74197a7e118a44033cd656e964cdce83"
+  integrity sha512-DMxaxSmgUOLTyi7s0tDwaX5VwtljcCj9c1IhOo3EyjTjTrtSFyEHTyI61qvOxk+DXtbVYCybeqYKFe6TiM+Cbg==
+  dependencies:
+    rxjs ">= 6"
 
 react-native-svg@^12.1.1:
   version "12.1.1"
@@ -6820,6 +6832,11 @@ react-native-video@^5.2.0:
     keymirror "^0.1.1"
     prop-types "^15.7.2"
     shaka-player "^2.5.9"
+
+react-native-volume-manager@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-volume-manager/-/react-native-volume-manager-0.4.0.tgz#e6bad4891e07cd6ce34e9b97b89bd4afce9fd864"
+  integrity sha512-3NPRFEDpMiP0vld6ouTPSG6qtqvq23/JdJBkpae0AptR6fiyb+pT0DXC0QJ42yi922BezTUvo0xYyDwWBkP2eQ==
 
 react-native@0.66.4:
   version "0.66.4"
@@ -7180,6 +7197,13 @@ run-parallel@^1.1.9:
   integrity sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==
   dependencies:
     queue-microtask "^1.2.2"
+
+"rxjs@>= 6":
+  version "7.5.5"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.5.5.tgz#2ebad89af0f560f460ad5cc4213219e1f7dd4e9f"
+  integrity sha512-sy+H0pQofO95VDmFLzyaw9xNJU4KTRSwQIGM6+iG3SypAtCiLDzpeG8sJrNCWn2Up9km+KhkvTdbkrdy+yzZdw==
+  dependencies:
+    tslib "^2.1.0"
 
 safe-buffer@5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"

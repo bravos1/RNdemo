@@ -1,6 +1,8 @@
 import { View, Text, StyleSheet, PermissionsAndroid } from 'react-native'
 import React, { useEffect } from 'react'
 import { Camera, useCameraDevices } from 'react-native-vision-camera'
+import { Button } from 'native-base'
+import { FaceUtils } from './Utils'
 
 const FaceDemo = () => {
   const devices = useCameraDevices()
@@ -18,7 +20,6 @@ const FaceDemo = () => {
         },
       );
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        console.log('💫 ~ test: 1')
       } else {
         console.log("💫 ~ 获取权限失败")
       }
@@ -31,6 +32,10 @@ const FaceDemo = () => {
     requestCameraPermissions()
   }, [])
 
+
+  const test = () => {
+    FaceUtils.show();
+  }
   return (
     <View style={{ width: "100%", height: "100%" }}>
       <Text style={{ color: "white" }}>FaceDemo</Text>
@@ -41,6 +46,7 @@ const FaceDemo = () => {
           isActive={true}
         />
       }
+      <Button onPress={() => test()} alignSelf="center"> CAMERA</Button>
     </View>
   )
 }

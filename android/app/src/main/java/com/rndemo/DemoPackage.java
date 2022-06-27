@@ -23,6 +23,7 @@ public class DemoPackage implements ReactPackage {
         List<NativeModule> modules = new ArrayList<>();
 
         modules.add(new FaceUtils(reactContext));
+        modules.add(new DeviceUtils(reactContext));
 
         return modules;
     }
